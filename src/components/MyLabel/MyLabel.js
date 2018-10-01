@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './MyLabel.css';
-import './Counter.js'
-import Counter from './Counter';
+import Counter from '../Counter/Counter';
 
 class MyLabel extends Component {
     constructor(props) {
@@ -25,14 +24,14 @@ class MyLabel extends Component {
         // console.log(this, event);
         // window.e = event
         // event.persist()
-        setTimeout(()=> {
+        setTimeout(() => {
             // console.table(event.target)
             // console.table(window.e)
         }, 1000)
         this.setState({
             style: {
-                color: '#a0f',
-                background: '#abc'
+                color: '#fff',
+                background: '#9ab'
             }
         });
     }
@@ -49,11 +48,11 @@ class MyLabel extends Component {
 
     render() {
         return (
-            <div>
-            <label className="my-label" style={this.state.style}
-                   onClick={this.handleClick.bind(this)}
-                   onMouseLeave={this.handleMouseLeave.bind(this)}
-                   onMouseOver={this.handleMouseOver.bind(this)}>{this.props.text}</label>
+            <div className="label-box">
+                <label className="my-label" style={this.state.style}
+                       onClick={this.handleClick.bind(this)}
+                       onMouseLeave={this.handleMouseLeave.bind(this)}
+                       onMouseOver={this.handleMouseOver.bind(this)}>{this.props.text}</label>
                 <Counter value={this.state.counter}/>
             </div>
         );

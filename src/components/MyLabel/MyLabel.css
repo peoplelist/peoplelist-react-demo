@@ -1,3 +1,11 @@
+.label-box {
+    display: flex;
+    justify-content:flex-start;
+    align-items:center;
+}
+.label-box > * {
+    margin:10px;
+}
 .my-label {
     color: #f0f;
     font-size: 20px;
@@ -8,4 +16,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /*user-select: none;*/
 }

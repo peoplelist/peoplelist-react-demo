@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+import logo from './assets/logo.svg';
 import './App.css';
-import MyLabel from "./MyLabel";
-import MyForm from "./MyForm";
+import MyLabel from "./components/MyLabel/MyLabel";
+import MyForm from "./components/MyForm/MyForm";
 
 class App extends Component {
     render() {
@@ -12,7 +12,7 @@ class App extends Component {
                     <img src={logo} className="App-logo" alt="logo"/>
                     <h1 className="App-title">Welcome to Lisper React</h1>
                 </header>
-                <MyLabel text={"this is a label"}/>
+                <MyLabel text={"click me"}/>
                 <MyForm/>
             </div>
         );
