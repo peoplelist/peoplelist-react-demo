@@ -6,6 +6,7 @@ const peoples = (state = [], action) => {
         case C.INIT_STORE:
             return action.store;
         case C.ADD:
+            delete action.type;
             data = [
                 ...state,
                 Object.assign({}, action)
@@ -19,6 +20,7 @@ const peoples = (state = [], action) => {
         case C.UPDATE:
             data = state.map(p => {
                 if (p.id === action.id) {
+                    delete action.type;
                     return Object.assign({}, p, action);
                 } else {
                     return p;

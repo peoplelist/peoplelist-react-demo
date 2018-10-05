@@ -41,7 +41,8 @@ class AddPeople extends React.Component {
             this.props.dispatch(add({name: this.name.value, phone: this.phone.value, note: this.note.value}));
         } else {
             this.props.dispatch(update({
-                id: this.props.match.params.id,
+                // id: this.props.match.params.id,
+                id: this.query.id,
                 name: this.name.value,
                 phone: this.phone.value,
                 note: this.note.value,

@@ -4,8 +4,9 @@
     justify-content: space-between;
     align-items: center;
     background: #ccc;
-    border-top:0px solid #fff;
+    border-top: 0px solid #fff;
 }
+
 .peopleItem {
     /*border:2px solid #f00;*/
     transition: all 0.7s ease-out;
@@ -16,7 +17,7 @@
     justify-content: space-between;
     align-items: center;
     background: #ccc;
-    border-top:0px solid #fff;
+    border-top: 0px solid #fff;
 }
 
 .peopleItem:hover,
@@ -25,7 +26,7 @@
     background: #ffdfa6;
     /*height:50px;*/
     /*border-top:4px solid #faa;*/
-    height:40px;
+    height: 40px;
     /*color: #fff;*/
 }
 
@@ -37,12 +38,12 @@
 .peopleItem label {
     padding: 0 10px;
     /*width: 60px;*/
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
     text-align: center;
     display: flex;
-    align-items:center;
-    justify-content:center;
+    align-items: center;
+    justify-content: center;
 }
 
 .peopleItem label:not(:last-child) {
@@ -51,18 +52,19 @@
 
 .action {
     display: flex;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
 }
 
 .action > * {
     border-radius: 20px;
-    padding:0 10px;
+    padding: 0 10px;
     /*border:1px solid #4488ff;*/
     color: #00bf20;
     background: #dcffce;
     margin: 0 4px;
 }
+
 .action > *:hover {
     cursor: pointer;
     color: #e8e8e8;
@@ -70,7 +72,7 @@
 }
 
 .peopleItem:hover .action > * {
-    
+
 }
 
 /*.peopleItem label:nth-child(1) {*/

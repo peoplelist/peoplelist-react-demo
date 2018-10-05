@@ -1,8 +1,112 @@
 .peopleList {
     margin: 10px;
-    padding:10px;
-    border:1px solid #ddd;
+    padding: 10px;
+    border: 1px solid #ddd;
     /*display: flex;*/
     /*flex-flow: column nowrap;*/
-    flex-grow:1;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.table {
+    width: 100%;
+    color: #56557d;
+}
+
+.table th {
+    background: #abc;
+    color: #fff;
+    height: 32px;
+    padding: 0 2px;
+}
+
+.table tr {
+    background: #d2dada;
+    text-align: center;
+    /*transition: all 1.4s ease-out;*/
+    /*text-align: right;*/
+}
+
+.table td {
+}
+
+.table td > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 2px;
+    /*text-overflow: ellipsis;*/
+    /*overflow: hidden;*/
+    /*white-space:nowrap;*/
+}
+
+.table tr:hover {
+    background: #8092f1;
+    color: #fff;
+}
+
+.table tr td:first-child {
+    font-weight: bold;
+}
+
+.table tr:hover td:first-child {
+    /*transition: all 1.4s ease-out;*/
+    /*height:50px;*/
+    /*border-top:4px solid #faa;*/
+    /*height:40px;*/
+    padding: 4px 0;
+    /*color: #fff;*/
+}
+
+.table tr:hover .timeBox > div:first-child,
+.table tr:hover .timeBox > div:last-child {
+    /*height:24px;*/
+    color: #fff;
+}
+
+.action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    user-select: none;
+    flex-flow: row wrap;
+}
+
+.action > * {
+    height: 24px;
+    border-radius: 20px;
+    padding: 0 10px;
+    /*border:1px solid #4488ff;*/
+    color: #00bf20;
+    background: #dcffce;
+    margin: 4px;
+}
+
+.action > *:hover {
+    cursor: pointer;
+    color: #e8e8e8;
+    background: #9f77ff;
+}
+
+.timeBox {
+    display: flex;
+    /*flex-flow: column nowrap;*/
+    flex-flow: row wrap;
+    font-size: 14px;
+}
+
+.timeBox > div:first-child {
+    margin-right: 4px;
+    color: #0d4da5;
+}
+
+.timeBox > div:last-child {
+    color: #5506ff;
+}
+
+.timeBox * {
+    white-space: nowrap;
 }

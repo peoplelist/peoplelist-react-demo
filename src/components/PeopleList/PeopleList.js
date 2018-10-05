@@ -12,19 +12,71 @@ class PeopleList extends Component {
         super(props);
         // this.peoples = props.peoples;
         this.titles = [
-            'ID', 'Name', 'Phone', 'Note', 'State', 'UpdateTime', 'CreateTime', 'Action'
+            'Name', 'Phone', 'Note', 'State', 'Update Time', 'Create Time', 'Action'
         ]
+
+        this.onEdit = (data) => {
+            // window.location.replace("#/add/"+this.props.id);
+            // var {id, name, phone, note, updateTime, createTime, completed} = data;
+            delete data.createTimeDate;
+            delete data.createTimeTime;
+            delete data.updateTimeDate;
+            delete data.updateTimeTime;
+            this.props.history.push({
+                pathname: '/add/' + data.id,
+                query: {...data}
+            });
+        }
+
     }
 
     render() {
         return <div className={css.peopleList}>
-            <PeopleListTitle titles={this.titles}/>
-            {this.props.peoples.map(p =>
-                <PeopleItem key={p.id} {...p}
-                            onRemove={() => this.props.onRemove(p.id)}
-                    // onUpdate={()=> this.props.onUpdate(p)}
-                />)
-            }
+            <table className={css.table} border="0" width="100%" cellPadding="0" cellSpacing="1px">
+                <thead>
+                <tr>
+                    {this.titles.map((v, i) =>
+                        <th key={i}>{v}</th>
+                    )}
+                </tr>
+                </thead>
+                <tbody>
+                {this.props.peoples.map(p =>
+                    <tr key={p.id}>
+                        <td width="15%">
+                            <div>{p.name}</div>
+                        </td>
+                        <td width="20%">
+                            <div>{p.phone}</div>
+                        </td>
+                        <td width="20%">
+                            <div>{p.note}</div>
+                        </td>
+                        <td width="10%">
+                            <div>{p.completed}</div>
+                        </td>
+                        <td width="10%">
+                            <div className={css.timeBox}>
+                                <div> {p.updateTimeDate} </div>
+                                <div> {p.updateTimeTime} </div>
+                            </div>
+                        </td>
+                        <td width="10%">
+                            <div className={css.timeBox}>
+                                <div>{p.createTimeDate}</div>
+                                <div>{p.createTimeTime}</div>
+                            </div>
+                        </td>
+                        <td width="15%">
+                            <div className={css.action}>
+                                <div onClick={() => this.onEdit(p)}>Edit</div>
+                                <div onClick={() => this.props.onRemove(p.id)}>Delete</div>
+                            </div>
+                        </td>
+                    </tr>
+                )}
+                </tbody>
+            </table>
         </div>
     }
 }
@@ -43,8 +95,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 export default withRouter(connect(state => {
     state.peoples.map(item => {
-        item.createTime = item.createTime.substr(0, 10);
-        item.updateTime = item.updateTime.substr(0, 10);
+        item.createTimeDate = item.createTime.substr(2, 8).split('-').join('/');
+        item.createTimeTime = item.createTime.substr(11, 8);
+        item.updateTimeDate = item.updateTime.substr(2, 8).split('-').join('/');
+        item.updateTimeTime = item.updateTime.substr(11, 8);
         return item;
     });
     return state

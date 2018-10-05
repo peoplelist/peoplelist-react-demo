@@ -18,10 +18,15 @@ export const remove = (id) => ({
 });
 
 export const update = (data) => {
-    return Object.assign({}, data, {
+    return {
         type: C.UPDATE,
-        updateTime: new Date().toISOString()
-    });
+        updateTime: new Date().toISOString(),
+        id: data.id,
+        name: data.name,
+        note: data.note,
+        createTime: data.createTime,
+        completed: data.completed
+    };
 };
 
 export const setPeopleFilter = filter => ({
