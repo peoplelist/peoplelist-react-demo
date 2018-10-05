@@ -1,0 +1,20 @@
+.aboutContainer {
+    margin:10px;
+    padding:10px;
+    border:1px solid #ccc;
+    display: flex;
+    flex-grow:1;
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: hidden;
+}
+
+.aboutContainer > div:nth-of-type(2){
+    background: #def;
+    flex-grow:1;
+    padding:10px;
+}
+
+.aboutContent {
+    overflow: auto;
+}

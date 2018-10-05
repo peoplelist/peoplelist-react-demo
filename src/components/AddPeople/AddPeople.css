@@ -1,0 +1,21 @@
+form {
+    /*outline:none;*/
+}
+.formItem {
+    width:200px;
+    height:30px;
+    display: flex;
+    align-items:center;
+    margin:4px;
+}
+.formItem label {
+    margin-right:10px;
+}
+.formItem input {
+    flex-grow:1;
+    height:30px;
+}
+
+.submitBtn {
+    padding: 0 12px;
+}

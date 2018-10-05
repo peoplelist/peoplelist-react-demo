@@ -1,0 +1,48 @@
+.mainMenu {
+    background: #abc;
+    height:40px;
+    min-height:36px;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.mainMenu a {
+    padding:0 12px;
+    flex-shrink:0;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    font-size: 14px;
+    height: 30px;
+    border-radius: 4px;
+    font-weight:bold;
+    margin:0 2px;
+}
+
+.mainMenu a:hover {
+    background: rgba(255, 252, 230, 0.73);
+}
+
+.active {
+    color: #b700f3;
+    background: #fff5af;
+}
+
+.menuGroup {
+    display: flex;
+    align-items:center;
+    flex-flow: row nowrap;
+}
+
+.mainMenu a.button {
+    color: #fff;
+    background: #8080ff;
+    margin-right:12px;
+    transition: background 0.5s ease;
+}
+
+.mainMenu a.button:hover {
+    background: #44f;
+    transition: background 0.5s ease;
+    cursor: pointer;
+}

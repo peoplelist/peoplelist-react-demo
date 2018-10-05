@@ -1,0 +1,8 @@
+.peopleList {
+    margin: 10px;
+    padding:10px;
+    border:1px solid #ddd;
+    /*display: flex;*/
+    /*flex-flow: column nowrap;*/
+    flex-grow:1;
+}
