@@ -1,7 +1,8 @@
 {
-  "name": "my-app",
+  "name": "lisperAddressBook",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lisperAddressBook.github.io",
   "dependencies": {
     "antd-mobile": "^2.2.5",
     "autoprefixer": "7.1.6",
