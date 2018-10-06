@@ -1,5 +1,6 @@
 .peopleList {
     margin: 10px;
+    margin-bottom: 0;
     padding: 10px;
     border: 1px solid #ddd;
     /*display: flex;*/
@@ -7,6 +8,7 @@
     flex-grow: 1;
     overflow: auto;
 }
+
 
 .table {
     width: 100%;
@@ -83,12 +85,19 @@
     color: #00bf20;
     background: #dcffce;
     margin: 4px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    flex-grow: 1;
+    max-width:70px;
 }
 
 .action > *:hover {
     cursor: pointer;
     color: #e8e8e8;
-    background: #9f77ff;
+    /*background: #9f77ff;*/
+    color: #dcffce;
+    background: #00bf20;
 }
 
 .timeBox {
@@ -109,4 +118,28 @@
 
 .timeBox * {
     white-space: nowrap;
+}
+
+
+@media all and (max-width:320px) {
+    .peopleList {
+        margin: 0px;
+        padding: 0px;
+    }
+    .table {
+        font-size:14px;
+    }
+
+    .action > * {
+        font-size:12px;
+        margin: 4px 2px;
+        padding: 0 5px;
+    }
+    .timeBox {
+        display: flex;
+        /*flex-flow: column nowrap;*/
+        flex-flow: column nowrap;
+        font-size: 12px;
+    }
+
 }

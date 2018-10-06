@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {add, update} from '../../actions';
+import {add, update, getById} from '../../actions';
 import css from "./AddPeople.css";
 import {withRouter} from 'react-router';
 
@@ -10,6 +10,7 @@ class AddPeople extends React.Component {
         this.name = '';
         this.phone = '';
         this.note = '';
+        this.id = '';
         this.state = {
             isNew: true,
             btnLabel: 'Add'
@@ -22,15 +23,24 @@ class AddPeople extends React.Component {
         if (this.props.match.params.id === 'new') {
             this.isNew = true;
         } else {
+            this.id = this.props.match.params.id;
             var query = this.props.location.query;
             this.query = query;
             console.log('query:');
             console.log(query);
-            if (query) {
+            if (!this.query) {
+                let peoples = this.props.peoples;
+                for (let i=0; i<peoples.length; i++) {
+                    if (peoples[i].id === this.id) {
+                        this.query = peoples[i];
+                    }
+                }
+            }
+            if (this.query) {
                 this.setState({isNew: false, btnLabel: 'Update'});
-                this.name.value = query.name;
-                this.phone.value = query.phone;
-                this.note.value = query.note;
+                this.name.value = this.query.name;
+                this.phone.value = this.query.phone;
+                this.note.value = this.query.note;
             }
         }
     }
@@ -79,4 +89,4 @@ class AddPeople extends React.Component {
     }
 }
 
-export default withRouter(connect()(AddPeople));
+export default withRouter(connect(state=>state)(AddPeople));

@@ -19,9 +19,12 @@ import {initStore} from '../../actions/index';
 
 class App extends Component {
 
-    componentDidMount() {
+    constructor (props) {
+        super(props);
         var data = localStorage.getItem('store');
         data = JSON.parse(data);
+        console.log('localStorate:')
+        console.log(data);
         this.props.initStore(data);
     }
 
@@ -29,7 +32,7 @@ class App extends Component {
         return (
             <div className={css.App}>
                 <header className={css.AppHeader}>
-                    <h1 className={css.AppTitle}>Welcome to Lisper React</h1>
+                    <h1 className={css.AppTitle}>Address Book</h1>
                 </header>
                 <Router>
                     <div className={css.main}>
@@ -46,6 +49,9 @@ class App extends Component {
                         </Switch>
                     </div>
                 </Router>
+                <footer className={css.footer}>
+                    <div> <span>©2018 by Lisper Li </span><span> (Email: leyapin@gmail.com).</span><span>All Rights Reserved</span></div>
+                </footer>
             </div>
         );
     }

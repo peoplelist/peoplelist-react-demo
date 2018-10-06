@@ -1,10 +1,11 @@
 .mainMenu {
-    background: #abc;
+    background: #ffa96c;
     height:40px;
     min-height:36px;
     display: flex;
     justify-content:space-between;
     align-items:center;
+    flex-shrink:0;
 }
 .mainMenu a {
     padding:0 12px;

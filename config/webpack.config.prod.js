@@ -180,6 +180,8 @@ module.exports = {
                     {
                       loader: require.resolve('css-loader'),
                       options: {
+                          module: true,
+                          localIdentName: '[name]-[hash:base64:6]',
                         importLoaders: 1,
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
@@ -190,6 +192,8 @@ module.exports = {
                       options: {
                         // Necessary for external CSS imports to work
                         // https://github.com/facebookincubator/create-react-app/issues/2677
+                          module: true,
+                          localIdentName: '[name]-[hash:base64:6]',
                         ident: 'postcss',
                         plugins: () => [
                           require('postcss-flexbugs-fixes'),
@@ -211,7 +215,61 @@ module.exports = {
               )
             ),
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+              exclude: [
+                  path.resolve(__dirname, '../src/common/css')
+              ]
           },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract(
+                    Object.assign(
+                        {
+                            fallback: {
+                                loader: require.resolve('style-loader'),
+                                options: {
+                                    hmr: false,
+                                },
+                            },
+                            use: [
+                                {
+                                    loader: require.resolve('css-loader'),
+                                    options: {
+                                        module: false,
+                                        importLoaders: 1,
+                                        minimize: true,
+                                        sourceMap: shouldUseSourceMap,
+                                    },
+                                },
+                                {
+                                    loader: require.resolve('postcss-loader'),
+                                    options: {
+                                        // Necessary for external CSS imports to work
+                                        // https://github.com/facebookincubator/create-react-app/issues/2677
+                                        ident: 'postcss',
+                                        plugins: () => [
+                                            require('postcss-flexbugs-fixes'),
+                                            autoprefixer({
+                                                browsers: [
+                                                    '>1%',
+                                                    'last 4 versions',
+                                                    'Firefox ESR',
+                                                    'not ie < 9', // React doesn't support IE8 anyway
+                                                ],
+                                                flexbox: 'no-2009',
+                                            }),
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                        extractTextPluginOptions
+                    )
+                ),
+                // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+                include: [
+                    path.resolve(__dirname, '../src/common/css')
+                ]
+            },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
           // This loader doesn't use a "test" so it will catch all modules

@@ -23,6 +23,7 @@ export const update = (data) => {
         updateTime: new Date().toISOString(),
         id: data.id,
         name: data.name,
+        phone: data.phone,
         note: data.note,
         createTime: data.createTime,
         completed: data.completed

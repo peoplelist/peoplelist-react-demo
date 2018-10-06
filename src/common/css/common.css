@@ -35,6 +35,7 @@ input {
     flex-grow:1;
     border:1px solid #ddd;
     border-radius: 20px;
+    -webkit-appearance:none;
 }
 input:focus {
     border:1px solid #0af;
@@ -43,13 +44,21 @@ input:focus {
 button {
     height: 36px;
     border:none;
-    background: #00aaff;
+    background: #8080ff;
     color: #fff;
     margin:10px;
     border-radius: 5px;
     font-size: 18px;
+    transition: background 0.5s ease;
+    padding: 0 12px;
+}
+button:hover {
+    background: #44f;
+    transition: background 0.5s ease;
+    cursor: pointer;
 }
 
 li {
     list-style: none;
 }
+

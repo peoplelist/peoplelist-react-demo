@@ -5,6 +5,7 @@ import PeopleItem from '../PeopleItem/PeopleItem';
 import PeopleListTitle from '../PeopleItem/PeopleListTitle';
 import {remove} from '../../actions/index';
 import {withRouter} from 'react-router';
+import {splitTime} from '../../common/js/common';
 
 
 class PeopleList extends Component {
@@ -12,7 +13,8 @@ class PeopleList extends Component {
         super(props);
         // this.peoples = props.peoples;
         this.titles = [
-            'Name', 'Phone', 'Note', 'State', 'Update Time', 'Create Time', 'Action'
+            // 'Name', 'Phone', 'Note', 'State', 'Update Time', 'Create Time', 'Action'
+            'Name', 'Phone', 'Update At', 'Action'
         ]
 
         this.onEdit = (data) => {
@@ -43,31 +45,31 @@ class PeopleList extends Component {
                 <tbody>
                 {this.props.peoples.map(p =>
                     <tr key={p.id}>
-                        <td width="15%">
+                        <td width="25%">
                             <div>{p.name}</div>
                         </td>
-                        <td width="20%">
+                        <td width="35%">
                             <div>{p.phone}</div>
                         </td>
+                        {/*<td width="30%">*/}
+                        {/*<div>{p.note}</div>*/}
+                        {/*</td>*/}
+                        {/*<td width="10%">*/}
+                        {/*<div>{p.completed}</div>*/}
+                        {/*</td>*/}
                         <td width="20%">
-                            <div>{p.note}</div>
-                        </td>
-                        <td width="10%">
-                            <div>{p.completed}</div>
-                        </td>
-                        <td width="10%">
                             <div className={css.timeBox}>
                                 <div> {p.updateTimeDate} </div>
                                 <div> {p.updateTimeTime} </div>
                             </div>
                         </td>
-                        <td width="10%">
-                            <div className={css.timeBox}>
-                                <div>{p.createTimeDate}</div>
-                                <div>{p.createTimeTime}</div>
-                            </div>
-                        </td>
-                        <td width="15%">
+                        {/*<td width="10%">*/}
+                        {/*<div className={css.timeBox}>*/}
+                        {/*<div>{p.createTimeDate}</div>*/}
+                        {/*<div>{p.createTimeTime}</div>*/}
+                        {/*</div>*/}
+                        {/*</td>*/}
+                        <td width="20%">
                             <div className={css.action}>
                                 <div onClick={() => this.onEdit(p)}>Edit</div>
                                 <div onClick={() => this.props.onRemove(p.id)}>Delete</div>
@@ -82,24 +84,27 @@ class PeopleList extends Component {
 }
 
 
+const mapStateToProps = state => {
+    //处理时间为时期和时间两部分
+    if (state.peoples && state.peoples.length > 0) {
+        state.peoples.map(item => {
+            [item.createTimeDate, item.createTimeTime] = splitTime(item.createTime);
+            [item.updateTimeDate, item.updateTimeTime] = splitTime(item.updateTime);
+            return item;
+        });
+    }
+    if (!state.peoples) {
+        state.peoples = []
+    }
+    return state
+};
+
 const mapDispatchToProps = (dispatch, ownProps) => ({
+    //根据id删除一项
     onRemove: (id) => {
         console.log('remove id=' + id);
         dispatch(remove(id));
     },
-
-    // onUpdate: (p) => {
-    //     dispatch(update(id, name, note));
-    // }
 });
 
-export default withRouter(connect(state => {
-    state.peoples.map(item => {
-        item.createTimeDate = item.createTime.substr(2, 8).split('-').join('/');
-        item.createTimeTime = item.createTime.substr(11, 8);
-        item.updateTimeDate = item.updateTime.substr(2, 8).split('-').join('/');
-        item.updateTimeTime = item.updateTime.substr(11, 8);
-        return item;
-    });
-    return state
-}, mapDispatchToProps)(PeopleList));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PeopleList));
