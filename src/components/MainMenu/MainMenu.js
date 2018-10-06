@@ -16,7 +16,12 @@ class MainMenu extends React.Component {
                 {/*<NavLink activeClassName={css.active} to={{pathname: '/about', search: '?sort=name'}}>new About</NavLink>*/}
             </div>
             <div className={css.menuGroup}>
-                <a className={css.button} onClick={() => window.location.replace("#/add/new")}>Add People</a>
+                <div className={css.addBtn} onClick={() => window.location.replace("#/add/new")}>
+                    <div>
+                    <div></div>
+                    <div></div>
+                    </div>
+                </div>
             </div>
         </nav>
     }

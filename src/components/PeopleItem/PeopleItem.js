@@ -1,3 +1,4 @@
+//not use
 import React, {Component} from 'react';
 import css from './PeopleItem.css';
 // import {connect} from 'react-redux';

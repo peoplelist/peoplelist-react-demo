@@ -1,5 +1,14 @@
-form {
+
+.addPeople {
     /*outline:none;*/
+    margin: 10px;
+    margin-bottom: 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    /*display: flex;*/
+    /*flex-flow: column nowrap;*/
+    flex-grow: 1;
+    overflow: auto;
 }
 .formItem {
     width:200px;
@@ -16,6 +25,6 @@ form {
     height:30px;
 }
 
-/*.submitBtn {*/
-    /*padding: 0 12px;*/
-/*}*/
+.submitBtn {
+    width:100px;
+}

@@ -9,7 +9,6 @@
     overflow: auto;
 }
 
-
 .table {
     width: 100%;
     color: #56557d;
@@ -45,12 +44,14 @@
 }
 
 .table tr:hover {
-    background: #8092f1;
-    color: #fff;
+    /*background: #b0a6da;*/
+    /*color: #fff;*/
+    background: #d9e8e8;
 }
 
 .table tr td:first-child {
     font-weight: bold;
+    height: 30px;
 }
 
 .table tr:hover td:first-child {
@@ -64,8 +65,7 @@
 
 .table tr:hover .timeBox > div:first-child,
 .table tr:hover .timeBox > div:last-child {
-    /*height:24px;*/
-    color: #fff;
+    /*color: #fff;*/
 }
 
 .action {
@@ -84,12 +84,12 @@
     /*border:1px solid #4488ff;*/
     color: #00bf20;
     background: #dcffce;
-    margin: 4px;
+    margin: 2px;
     display: flex;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
     flex-grow: 1;
-    max-width:70px;
+    /*max-width:70px;*/
 }
 
 .action > *:hover {
@@ -120,21 +120,24 @@
     white-space: nowrap;
 }
 
-
-@media all and (max-width:320px) {
+@media all and (max-width: 320px) {
     .peopleList {
         margin: 0px;
         padding: 0px;
+        border: none;
+        border-bottom: 1px solid #ccc;
     }
+
     .table {
-        font-size:14px;
+        font-size: 14px;
     }
 
     .action > * {
-        font-size:12px;
-        margin: 4px 2px;
+        font-size: 12px;
+        margin: 2px;
         padding: 0 5px;
     }
+
     .timeBox {
         display: flex;
         /*flex-flow: column nowrap;*/

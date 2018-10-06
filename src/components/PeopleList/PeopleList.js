@@ -1,12 +1,9 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
 import css from './PeopleList.css';
-import PeopleItem from '../PeopleItem/PeopleItem';
-import PeopleListTitle from '../PeopleItem/PeopleListTitle';
 import {remove} from '../../actions/index';
 import {withRouter} from 'react-router';
 import {splitTime} from '../../common/js/common';
-
 
 class PeopleList extends Component {
     constructor(props) {
@@ -15,7 +12,7 @@ class PeopleList extends Component {
         this.titles = [
             // 'Name', 'Phone', 'Note', 'State', 'Update Time', 'Create Time', 'Action'
             'Name', 'Phone', 'Update At', 'Action'
-        ]
+        ];
 
         this.onEdit = (data) => {
             // window.location.replace("#/add/"+this.props.id);
@@ -59,8 +56,8 @@ class PeopleList extends Component {
                         {/*</td>*/}
                         <td width="20%">
                             <div className={css.timeBox}>
-                                {splitTime(p.updateTime).map(v =>
-                                    <div> {v} </div>)
+                                {splitTime(p.updateTime).map((v, i) =>
+                                    <div key={i}> {v} </div>)
                                 }
                             </div>
                         </td>
@@ -93,4 +90,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
 });
 
-export default withRouter(connect(state => state, mapDispatchToProps)(PeopleList));
+export default withRouter(connect(state => {
+    if (!state.peoples) {
+        state.peoples = [];
+    }
+    return state;
+}, mapDispatchToProps)(PeopleList));

@@ -1,20 +1,30 @@
 .aboutContainer {
-    margin:10px;
-    padding:10px;
-    border:1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
     display: flex;
-    flex-grow:1;
+    flex-grow: 1;
     display: flex;
     flex-flow: row nowrap;
     overflow: hidden;
 }
 
-.aboutContainer > div:nth-of-type(2){
+.aboutContainer > div:nth-of-type(2) {
     background: #def;
-    flex-grow:1;
-    padding:10px;
+    flex-grow: 1;
+    padding: 10px;
 }
 
 .aboutContent {
     overflow: auto;
+}
+
+@media all and (max-width: 320px) {
+
+    .aboutContainer {
+        margin: 0px;
+        padding: 0px;
+        border: none;
+        border-bottom: 1px solid #ccc;
+    }
 }

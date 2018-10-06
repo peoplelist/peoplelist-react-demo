@@ -1,3 +1,4 @@
+//not use
 import React, {Component} from 'react';
 import './MyLabel.css';
 import Counter from '../Counter/Counter';

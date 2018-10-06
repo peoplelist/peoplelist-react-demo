@@ -19,7 +19,7 @@ import {initStore} from '../../actions/index';
 
 class App extends Component {
 
-    constructor (props) {
+    constructor(props) {
         super(props);
         var data = localStorage.getItem('store');
         data = JSON.parse(data);
@@ -50,7 +50,8 @@ class App extends Component {
                     </div>
                 </Router>
                 <footer className={css.footer}>
-                    <div> <span>©2018 by Lisper Li </span><span> (Email: leyapin@gmail.com).</span><span>All Rights Reserved</span></div>
+                    <div><span> Copyleft 2018 Lisper.Li 版权部分所有 &nbsp;</span> <span> (Email: leyapin@gmail.com).</span>
+                    </div>
                 </footer>
             </div>
         );

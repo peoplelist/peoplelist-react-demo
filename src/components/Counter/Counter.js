@@ -1,3 +1,4 @@
+//not use
 import React, {Component} from 'react';
 
 const Counter = (props) => {

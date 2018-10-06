@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {add, update, getById} from '../../actions';
+import {add, update } from '../../actions';
 import css from "./AddPeople.css";
 import {withRouter} from 'react-router';
 
@@ -67,7 +67,7 @@ class AddPeople extends React.Component {
     }
 
     render() {
-        return <div>
+        return <div className={css.addPeople}>
             <form onSubmit={this.submitDate.bind(this)}>
                 <div className={css.formItem}>
                     <label>Name:</label>
@@ -83,6 +83,7 @@ class AddPeople extends React.Component {
                 </div>
                 <div>
                     <button className={css.submitBtn} type="submit">{this.state.btnLabel}</button>
+                    <button className={css.submitBtn} type="button" onClick={ ()=>this.props.history.push('/')}>Back</button>
                 </div>
             </form>
         </div>
