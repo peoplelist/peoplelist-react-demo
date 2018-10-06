@@ -59,8 +59,9 @@ class PeopleList extends Component {
                         {/*</td>*/}
                         <td width="20%">
                             <div className={css.timeBox}>
-                                <div> {p.updateTimeDate} </div>
-                                <div> {p.updateTimeTime} </div>
+                                {splitTime(p.updateTime).map(v =>
+                                    <div> {v} </div>)
+                                }
                             </div>
                         </td>
                         {/*<td width="10%">*/}
@@ -84,21 +85,6 @@ class PeopleList extends Component {
 }
 
 
-const mapStateToProps = state => {
-    //处理时间为时期和时间两部分
-    if (state.peoples && state.peoples.length > 0) {
-        state.peoples.map(item => {
-            [item.createTimeDate, item.createTimeTime] = splitTime(item.createTime);
-            [item.updateTimeDate, item.updateTimeTime] = splitTime(item.updateTime);
-            return item;
-        });
-    }
-    if (!state.peoples) {
-        state.peoples = []
-    }
-    return state
-};
-
 const mapDispatchToProps = (dispatch, ownProps) => ({
     //根据id删除一项
     onRemove: (id) => {
@@ -107,4 +93,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PeopleList));
+export default withRouter(connect(state => state, mapDispatchToProps)(PeopleList));
