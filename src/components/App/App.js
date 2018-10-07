@@ -50,7 +50,7 @@ class App extends Component {
                     </div>
                 </Router>
                 <footer className={css.footer}>
-                    <div><span> Copyleft 2018 Lisper.Li 版权部分所有 &nbsp;</span> <span> (Email: leyapin@gmail.com).</span>
+                    <div><span> Copyleft 2018 Lisper.Li 版权所无 &nbsp;</span> <span> Email: 931816770@qq.com</span>
                     </div>
                 </footer>
             </div>
